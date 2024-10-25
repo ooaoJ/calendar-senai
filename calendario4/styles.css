@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    user-select: none;
+}
+::selection{
+    background-color: #ff7f16;
+    color: #fff;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #333 ;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+#calendario {
+    display: block;
+}
+#calendarioSemanal {
+    display: none;
+}
+.wrapper{
+    width: 560px;
+    display: flex;
+    flex-direction: column;
+    background-color: #666666;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 10px;
+    height: auto;
+    max-height: 600px;
+    animation: shadow 2s linear infinite;
+}
+.wrapper header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    color: #fff;
+}
+.wrapper header p{
+    font-size: 26px;
+    width: auto;
+}
+.wrapper .icones {
+    width: auto;
+    display: flex;
+    gap: 50px;
+}
+.wrapper .icones i{
+    width: 30px;
+    height: 25px;
+    font-size: 22px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.semanas{
+    height: 30px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #ff7f16;
+}
+.dias{
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(7,1fr) ;
+    gap: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 10px;
+}
+.dias li{
+    background-color: #ffffff0c;
+    color: #fff;
+    cursor: pointer;;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dias li:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+.diaAtual{
+    background-color: #ff7f16 !important;
+}
+.inativo{
+    opacity: 0.5;
+}
+.selectDay{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#selectDayText{
+    color: #fff;
+    font-size: 18px;
+}
+@keyframes shadow{
+    0%{
+        box-shadow: 0px 0px 100px #ff7f1671;
+    }
+    50%{
+        box-shadow: 0px 0px 100px #ff7f16c2;
+    }
+    100%{
+        box-shadow: 0px 0px 100px #ff7f1671;
+    }
+}
+@media (max-width: 768px) {
+    .wrapper{
+        transform: scale(0.9);
+    }
+}
+@media (max-width: 560px) {
+    .wrapper{
+        transform: scale(0.7);
+    }
+}
+.fadeIn{
+    animation: fadeIn 2s ease; 
+}
+@keyframes fadeIn{
+    0%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.fadeOut {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+.hamburguer{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border-radius: 100%;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    z-index: 2;
+}
+.hamburguer .button-linha{
+    width: 40px;
+    height: 2px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+#menu {
+    display: block;
+    width: 300px;
+    height: 100vh;
+    background-color: #666666;
+    border-radius: 0 10px 10px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu.menu-aberto {
+    transform: translateX(0);
+}
+.hamburguer .button-linha {
+    width: 40px;
+    height: 2px;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#linha2 {
+    transition: opacity 0.3s ease;
+}
+#linha1, #linha3 {
+    transform-origin: center;
+}
+#menu div{
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#tema{
+    background-color: rgb(255, 255, 255);
+    font-size: 22px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#tema:hover{
+    transform: scale(1.05);
+    transition: 0.8s;
+    border: 1px solid black;
+    background-color: #ff7f16;
+}
+#formato{
+    background-color: rgb(255, 255, 255);
+    font-size: 22px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#formato:hover{
+    transform: scale(1.05);
+    transition: 0.8s;
+    border: 1px solid black;
+    background-color: #ff7f16;
+}

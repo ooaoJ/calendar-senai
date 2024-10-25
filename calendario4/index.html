@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+    <link id="tema-link" rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <button class="hamburguer" onclick="openMenu()">
+        <span class="button-linha" id="linha1"></span>
+        <span class="button-linha" id="linha2"></span>
+        <span class="button-linha" id="linha3"></span>
+    </button>
+    <div id="menu">
+        <div>
+            <p>Escolha o tema do seu calendário!</p>
+            <p id="tema" onclick="mudarTema()">Tema claro</p>
+            <p>Altere o formato do seu calendário!</p>
+            <p id="formato" onclick="mudarFormato()">Calendario Semanal</p>
+        </div>
+    </div>
+    <div id="calendario" class="wrapper">
+        <header>
+            <p class="data-atual">Outubro 2024</p>
+            <div class="icones">
+                <i class="fa-solid fa-chevron-left" id="before"></i>
+                <i class="fa-solid fa-chevron-right" id="after"></i>
+            </div>
+        </header>
+        <div class="calendario">
+            <ul class="semanas">
+                <li>Dom</li>
+                <li>Seg</li>
+                <li>Ter</li>
+                <li>Qua</li>
+                <li>Qui</li>
+                <li>Sex</li>
+                <li>Sab</li>
+            </ul>
+            <ul class="dias">
+            </ul>
+            <div class="selectDay">
+                <p id="selectDayText"></p>
+            </div>
+        </div>
+    </div>
+    <div id="calendarioSemanal" class="wrapper" style="display: none;">
+        <header>
+            <p class="data-atual">Outubro 2024</p>
+            <div class="icones">
+                <i class="fa-solid fa-chevron-left" id="beforeSemanal"></i>
+                <i class="fa-solid fa-chevron-right" id="afterSemanal"></i>
+            </div>
+        </header>
+        <div class="calendario">
+            <ul class="semanas">
+                <li>Dom</li>
+                <li>Seg</li>
+                <li>Ter</li>
+                <li>Qua</li>
+                <li>Qui</li>
+                <li>Sex</li>
+                <li>Sab</li>
+            </ul>
+            <ul class="dias">
+            </ul>
+        </div>
+        <div class="selectDay">
+            <p id="selectDayText"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
