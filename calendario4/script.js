@@ -18,18 +18,15 @@ const atualizarCalendario = () => {
 
     let listTag = "";
 
-    // Preenchendo os dias do mês anterior
     for (let i = primeiroDiaDoMes; i > 0; i--) {
         listTag += `<li class="inativo fadeIn" id="prev${ultimoDiaMesPassado - i + 1}" onclick="selectDay(${ultimoDiaMesPassado - i + 1}, ${mesAtual === 0 ? 12 : mesAtual}, ${mesAtual === 0 ? anoAtual - 1 : anoAtual})">${ultimoDiaMesPassado - i + 1}</li>`;
     }
 
-    // Preenchendo os dias do mês atual
     for (let i = 1; i <= ultimaDataDoMes; i++) {
         let classeDiaAtual = i === diaAtual && mesAtual === new Date().getMonth() && anoAtual === new Date().getFullYear() ? "diaAtual" : "";
         listTag += `<li class="${classeDiaAtual} fadeIn" id="day${i}" onclick="selectDay(${i}, ${mesAtual + 1}, ${anoAtual})">${i}</li>`;
     }
 
-    // Preenchendo os dias do próximo mês
     const diasExtras = 42 - (primeiroDiaDoMes + ultimaDataDoMes);
     for (let i = 1; i <= diasExtras; i++) {
         listTag += `<li class="inativo fadeIn" id="next${i}" onclick="selectDay(${i}, ${mesAtual === 11 ? 1 : mesAtual + 2}, ${mesAtual === 11 ? anoAtual + 1 : anoAtual})">${i}</li>`;
@@ -98,12 +95,10 @@ function mudarTema(){
     }
 }
 
-// Função para atualizar o texto do mês e ano no calendário semanal
 const atualizarTituloSemanal = (mes, ano) => {
     document.querySelector("#calendarioSemanal .data-atual").innerHTML = `${meses[mes]} ${ano}`;
 };
 
-// Função para preencher o calendário semanal
 const preencherSemanal = () => {
     let diasSemanaisTag = document.querySelector("#calendarioSemanal .dias");
     let dataSelecionada = new Date(anoAtual, mesAtual, diaAtual);
@@ -113,19 +108,13 @@ const preencherSemanal = () => {
 
     for (let i = 0; i < 7; i++) {
         let diaAtualSemana = new Date(dataSelecionada.setDate(primeiroDiaDaSemana + i));
-        
-        // Comparação que verifica dia, mês e ano atuais
-        let classeDiaAtual = (diaAtualSemana.getDate() === data.getDate() &&
-                              diaAtualSemana.getMonth() === data.getMonth() &&
-                              diaAtualSemana.getFullYear() === data.getFullYear()) ? "diaAtual" : ""; 
-        
+        let classeDiaAtual = (diaAtualSemana.getDate() === data.getDate() && diaAtualSemana.getMonth() === data.getMonth() && diaAtualSemana.getFullYear() === data.getFullYear()) ? "diaAtual" : ""; 
         diasSemanaisTag.innerHTML += `<li class="${classeDiaAtual}" onclick="selectDay(${diaAtualSemana.getDate()}, ${diaAtualSemana.getMonth() + 1}, ${diaAtualSemana.getFullYear()})">${diaAtualSemana.getDate()}</li>`;
     }
     
-    atualizarTituloSemanal(mesAtual, anoAtual); // Atualiza o título para o mês e ano corretos
+    atualizarTituloSemanal(mesAtual, anoAtual); 
 };
 
-// Função para retroceder a semana
 document.getElementById("beforeSemanal").addEventListener("click", () => {
     diaAtual -= 7;
     let novaData = new Date(anoAtual, mesAtual, diaAtual);
@@ -135,7 +124,6 @@ document.getElementById("beforeSemanal").addEventListener("click", () => {
     preencherSemanal();
 });
 
-// Função para avançar a semana
 document.getElementById("afterSemanal").addEventListener("click", () => {
     diaAtual += 7;
     let novaData = new Date(anoAtual, mesAtual, diaAtual);
