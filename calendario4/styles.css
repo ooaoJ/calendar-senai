@@ -66,6 +66,21 @@ body{
     justify-content: center;
     cursor: pointer;
 }
+.wrapper .iconesSemanais {
+    width: auto;
+    display: flex;
+    gap: 50px;
+}
+.wrapper .iconesSemanais i{
+    width: 30px;
+    height: 25px;
+    font-size: 22px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 .semanas{
     height: 30px;
     align-items: center;
