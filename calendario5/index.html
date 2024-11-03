@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+    <link id="tema-link" rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <button class="hamburguer" onclick="openMenu()">
+        <span class="button-linha" id="linha1"></span>
+        <span class="button-linha" id="linha2"></span>
+        <span class="button-linha" id="linha3"></span>
+    </button>
+    <div id="menu">
+        <div>
+            <p>Escolha o tema do seu calendário!</p>
+            <p id="tema" onclick="mudarTema()">Tema claro</p>
+            <p>Altere o formato do seu calendário!</p>
+            <p id="formato" onclick="mudarFormato()">Calendario Semanal</p>
+        </div>
+    </div>
+    <div id="calendario" class="wrapper">
+        <header>
+            <p class="data-atual">Outubro 2024</p>
+            <div class="icones">
+                <i class="fa-solid fa-chevron-left" id="before"></i>
+                <i class="fa-solid fa-chevron-right" id="after"></i>
+            </div>
+        </header>
+        <div class="calendario">
+            <ul class="semanas">
+                <li>Dom</li>
+                <li>Seg</li>
+                <li>Ter</li>
+                <li>Qua</li>
+                <li>Qui</li>
+                <li>Sex</li>
+                <li>Sab</li>
+            </ul>
+            <ul class="dias">
+            </ul>
+            <div class="selectDay">
+                <p id="selectDayText"></p>
+            </div>
+        </div>
+    </div>
+    <div id="calendarioSemanal" class="wrapper" style="display: none;">
+        <header>
+            <p class="data-atual">Outubro 2024</p>
+            <div class="iconesSemanais">
+                <i class="fa-solid fa-chevron-left" id="beforeSemanal"></i>
+                <i class="fa-solid fa-chevron-right" id="afterSemanal"></i>
+            </div>
+        </header>
+        <div class="calendario">
+            <ul class="semanas">
+                <li>Dom</li>
+                <li>Seg</li>
+                <li>Ter</li>
+                <li>Qua</li>
+                <li>Qui</li>
+                <li>Sex</li>
+                <li>Sab</li>
+            </ul>
+            <ul class="dias">
+            </ul>
+        </div>
+        <div class="selectDay">
+            <p id="selectDayText"></p>
+        </div>
+    </div>
+    <div id="modal" style="display: none;">
+        <h2>Seus eventos:</h2>
+        <div id="modalEvents">
+            <div class="eventContainer">
+                <h3 id="eventContainerTitle"></h3>
+                <p id="eventContainerDesc"></p>
+            </div>
+        </div>
+        <div id="modalActions">
+            <button class="modalButton" id="addEvent" onclick="addEventModal()"><i class="fa-solid fa-plus"></i>Adicionar Evento</button>
+            <!-- <button class="modalButton" id="editEvent" onclick="editEventModal()"><i class="fa-solid fa-pen"></i>Editar Evento</button>
+            <button class="modalButton" id="deleteEvent" onclick="deleteEventModal()"><i class="fa-solid fa-trash"></i>Deletar Evento</button> -->
+        </div>
+        <button id="closeModal" onclick="closeModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div id="modalAction">
+        <h2 id="dayModalAction"></h2>
+        <form action="./php/saveEvent.php" method="POST">
+            <input type="hidden" name="data_evento" id="data_evento">
+            <label for="tituloModal">Título:</label>
+            <input type="text" name="tituloModal" required id="tituloModal">
+            <label for="descricaoModal">Descrição:</label>
+            <input type="text" name="descricaoModal" required id="descricaoModal">
+            <button type="submit" id="saveModal">Salvar</button>
+        </form>
+        <button id="closeModal" onclick="closeModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <script src="./js/script.js">
+        
+    </script>
+</body>
+</html>
